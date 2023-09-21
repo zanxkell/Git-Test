@@ -1,0 +1,26 @@
+#
+# Starter makefile for Assignment 5: Classy Zoo
+# Typing 'make' or 'make zoo' will create an executable file for testing
+#
+
+# Start by defining variables for the compiler and compiler flags (makes it easy to change later)
+# We can then use the variables later with $()
+
+CC = g++
+CFLAGS = -g -Wall -Wextra
+
+default: Vector
+
+
+Vector: Vector.o main.o
+		$(CC) $(CFlags) -o Vector Vector.o main.o
+
+Vector.o:       Vector.cpp Vector.h
+		$(CC) $(CFLAGS) -c Vector.cpp
+
+
+main.o: Vector.cpp Vector.h
+		$(CC) $(CFLAGS) -c main.cpp
+
+clean:
+		$(RM) Vector *.o
